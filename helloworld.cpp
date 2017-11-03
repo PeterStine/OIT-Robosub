@@ -4,7 +4,7 @@ using std::cout;
 int main()
 {
 	cout << "Robosub \n";
-	cout << "helloworld";
+	cout << "Jay Sucharitakul";
 	return 0;
 }
 
