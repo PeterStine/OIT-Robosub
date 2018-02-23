@@ -3,7 +3,7 @@ Oregon Tech Robosub (AUVSI) Software Team
 
 	Introduction
 Everything will be done mainly in Visual Studio 2017 using C++ for vision processing and machine learning.
-Hardware control for the sub will be accomplished primarily using Atmel Studio using C code on an ATMEGA328p microcontroller. 
+Hardware control for the sub will be accomplished primarily using Atmel Studio using C code on an ATMEGA328p microcontroller.
 
 	OpenCV Section
 
@@ -25,3 +25,6 @@ The following is a list of websites to get started on researching Machine Learni
 
 http://www.opennn.net/
 https://www.tensorflow.org/
+
+	Long Term Goals
+Eventually, using an FPGA to either replace/complement the Microcontroller on the Sub Arduino would provide some unique implications in terms of computational speed and hardware control. If an FPGA were to be integrated, likely an Intel FPGA, or Xilinx Board, SystemVerilog would be the optimal choice for HDL usage.
