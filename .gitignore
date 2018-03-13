@@ -1,1 +1,8 @@
-RTOS/
+../.vs/
+../Debug/
+../RTOS.sln
+Debug/
+RTOS.vcxproj
+RTOS.vcxproj.filters
+.vs/
+RTOS.sln
