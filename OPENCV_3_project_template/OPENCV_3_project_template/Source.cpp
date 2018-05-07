@@ -34,7 +34,7 @@ unsigned char MSB = 0;
 unsigned char LSB = 0;
 // Serial to Arduino global declarations
 
-int main(int argc, const char** argv)
+int main(int argc, const char* argv[])
 {
 	CvCapture* capture;
 	Mat frame;
