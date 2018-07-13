@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{7b58c57b-6764-49c1-b323-00f54e51fc34}</ProjectGuid>
     <avrdevice>ATmega328P</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>uartExample</AssemblyName>
-    <Name>SerialCommunication</Name>
-    <RootNamespace>uartExample</RootNamespace>
+    <AssemblyName>ServoMovement</AssemblyName>
+    <Name>ServoMovement</Name>
+    <RootNamespace>ServoMovement</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -25,36 +25,21 @@
     <preserveEEPROM>true</preserveEEPROM>
     <OverrideVtorValue />
     <BootSegment>2</BootSegment>
+    <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
+    <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-        <options />
-        <configurations />
-        <files />
-        <documentation help="" />
-        <offline-documentation help="" />
-        <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.34.1" />
-        </dependencies>
-      </framework-data>
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.40.0" />
+  </dependencies>
+</framework-data>
     </AsfFrameworkConfig>
-    <AAFDebugger>
-      <AAFDebugFiles>
-        <DebugFile>
-          <path>\Debug\uartExample.lss</path>
-          <AAFSetting>
-            <Label>Lss Files</Label>
-            <Extention>.lss</Extention>
-            <Regex>^\s*(?&lt;address&gt;[a-f0-9]*):\s*.*$</Regex>
-            <DebugEnabled>true</DebugEnabled>
-            <RegexGroups>address</RegexGroups>
-            <DebuggerExpression>$pc</DebuggerExpression>
-          </AAFSetting>
-        </DebugFile>
-      </AAFDebugFiles>
-    </AAFDebugger>
-    <ResetRule>0</ResetRule>
-    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -137,6 +122,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="servoMotion.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="servoMotion.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="timer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uartCallback.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uartCallback.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uartDriver.c">

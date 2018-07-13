@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SerialCommunication", "uartExample\SerialCommunication.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TextToHex", "TextToHex\TextToHex.cproj", "{9A020119-28C8-4CB7-AE95-7CC3F99A2A3D}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ServoMovement", "ServoMovement\ServoMovement.cproj", "{7B58C57B-6764-49C1-B323-00F54E51FC34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|AVR = Release|AVR
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
-		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
-		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
-		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{9A020119-28C8-4CB7-AE95-7CC3F99A2A3D}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9A020119-28C8-4CB7-AE95-7CC3F99A2A3D}.Debug|AVR.Build.0 = Debug|AVR
+		{9A020119-28C8-4CB7-AE95-7CC3F99A2A3D}.Release|AVR.ActiveCfg = Release|AVR
+		{9A020119-28C8-4CB7-AE95-7CC3F99A2A3D}.Release|AVR.Build.0 = Release|AVR
+		{7B58C57B-6764-49C1-B323-00F54E51FC34}.Debug|AVR.ActiveCfg = Debug|AVR
+		{7B58C57B-6764-49C1-B323-00F54E51FC34}.Debug|AVR.Build.0 = Debug|AVR
+		{7B58C57B-6764-49C1-B323-00F54E51FC34}.Release|AVR.ActiveCfg = Release|AVR
+		{7B58C57B-6764-49C1-B323-00F54E51FC34}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
