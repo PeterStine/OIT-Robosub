@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{9a020119-28c8-4cb7-ae95-7cc3f99a2a3d}</ProjectGuid>
     <avrdevice>ATmega328P</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,49 +12,34 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>uartExample</AssemblyName>
-    <Name>SerialCommunication</Name>
-    <RootNamespace>uartExample</RootNamespace>
+    <AssemblyName>TextToHex</AssemblyName>
+    <Name>TextToHex</Name>
+    <RootNamespace>TextToHex</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
+    <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
+    <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-        <options />
-        <configurations />
-        <files />
-        <documentation help="" />
-        <offline-documentation help="" />
-        <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.34.1" />
-        </dependencies>
-      </framework-data>
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.40.0" />
+  </dependencies>
+</framework-data>
     </AsfFrameworkConfig>
-    <AAFDebugger>
-      <AAFDebugFiles>
-        <DebugFile>
-          <path>\Debug\uartExample.lss</path>
-          <AAFSetting>
-            <Label>Lss Files</Label>
-            <Extention>.lss</Extention>
-            <Regex>^\s*(?&lt;address&gt;[a-f0-9]*):\s*.*$</Regex>
-            <DebugEnabled>true</DebugEnabled>
-            <RegexGroups>address</RegexGroups>
-            <DebuggerExpression>$pc</DebuggerExpression>
-          </AAFSetting>
-        </DebugFile>
-      </AAFDebugFiles>
-    </AAFDebugger>
-    <ResetRule>0</ResetRule>
-    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -137,6 +122,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uartCallback.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uartCallback.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uartDriver.c">
