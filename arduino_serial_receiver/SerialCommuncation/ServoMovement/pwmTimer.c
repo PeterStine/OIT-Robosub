@@ -26,7 +26,7 @@ void timerInit(void (*pulseUpFn)(void), void (*pulseDownFn)(void))
 
 void upPulseTime(const uint32_t value)
 {
-	uint32_t scaledValue = scale(value, 500, 2500, 30, 142);
+	uint32_t scaledValue = scale(value, 1050, 1850, 30, 142);
 	printf("Scaled value: %ld\n", scaledValue);
 	OCR0A = scaledValue;
 }
@@ -35,6 +35,14 @@ uint32_t scale(uint32_t reading, uint32_t min_in, uint32_t max_in,
 uint32_t min_out, uint32_t max_out)
 {
 	uint32_t sc = (((reading - min_in) * (max_out - min_out)) / (max_in - min_in)) + min_out;
+	if (reading < min_in)
+	{
+		sc = 30;
+	}
+	if (reading > max_in)
+	{
+		sc = 142;
+	}
 	return sc;
 }
 
