@@ -29,7 +29,7 @@
 	stdin  = &uart_input; \
 }
 
-void foreachLineRead(void (*inputCallback)(char*)); // void (*inputCallback)(char)
+void foreachLineRead(void (*inputCallback)(char*));
 
 void foreachCharRead(void);
 

@@ -12,20 +12,15 @@
 void convertAndPrint(char* input)
 {
 	long num = atol(input);
-	printf("\nSetting servo position to: %li\n", num);
-	//testServo();
-		servoPosition(num, 10);
-		//_delay_ms(STEP_DELAY);
-		//testServo();
+	printf("\nSetting servo position to: %ld\n", num);
+	servoPosition(num);
 }
 
 int main(void)
 {
 	uartCallbackInit();
 	servoInit();
-	testServo();
 	
-	//testServo();
 	foreachLineRead(convertAndPrint);
 
 	return 0;

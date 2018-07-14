@@ -21,8 +21,7 @@
 #define POSITION_DELAY 1500
 
 void servoInit(void);
-void servoPosition(unsigned long pos, int pulses);
-void testServo(void);
+void servoPosition(unsigned long pos);
 
 
 #endif

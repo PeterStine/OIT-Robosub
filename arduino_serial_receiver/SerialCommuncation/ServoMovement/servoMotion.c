@@ -7,79 +7,38 @@
 
 
 #include "servoMotion.h"
+#include "pwmTimer.h"
 
 #define DELAY_STEP 20
 
+void upPulse(void);
+void downPulse(void);
+
 void servoInit(void) {
 	DDRB |= SERVO_MASK;
+	timerInit(upPulse, downPulse);
 }
 
 void delay_us(unsigned long us) {
-	//_delay_us(2250);
-	
 	unsigned long steps = us / DELAY_STEP;
 	for (unsigned long i = 0; i < steps; i++) {
 		_delay_us(DELAY_STEP);
 	}
 }
 
-void servoPosition(unsigned long pos, int pulses) {
-	for (int i = 0; i < pulses; i++) {
-	  PORTB |= SERVO_MASK;
-	  delay_us(pos);
-	  PORTB &= ~SERVO_MASK;
-	  _delay_ms(STEP_DELAY);
-	}
+void servoPosition(unsigned long pos) {
+	
+	upPulseTime(pos);
 }
 
-void testServo(void)
+void upPulse(void)
 {
-	//servoInit();
+	// pin up
+	PORTB |= SERVO_MASK;
+}
 
-	for (int i = 0; i < 3; i++)
-	{
-		// Move to First Position
-		servoPosition(2250, 1);
-		//servoPosition(2100);
-
-		// Stepper Period Delay
-		//_delay_ms(STEP_DELAY);
-		
-		// Move to Second Position
-		servoPosition(2000, 1);
-		//PORTB |= SERVO_MASK;
-		//_delay_us(2000);
-		//PORTB &= ~SERVO_MASK;
-
-		// Stepper Period Delay
-		//_delay_ms(STEP_DELAY);
-
-		// Move to Third Position
-		servoPosition(1500, 1);
-		//PORTB |= SERVO_MASK;
-		//_delay_us(1500);
-		//PORTB &= ~SERVO_MASK;
-		
-		// Stepper Period Delay
-		//_delay_ms(STEP_DELAY);
-		
-		// Move to Fourth Position
-		servoPosition(1000, 1);
-		//PORTB|= SERVO_MASK;
-		//_delay_us(1000);
-		//PORTB &= ~SERVO_MASK;
-		
-		// Stepper Period Delay
-		//_delay_ms(STEP_DELAY);
-		
-		// Move to Fifth Position
-		servoPosition(500, 1);
-		//PORTB |= SERVO_MASK;
-		//_delay_us(500);
-		//PORTB &= ~SERVO_MASK;
-		
-		// Stepper Period Delay
-		//_delay_ms(STEP_DELAY);
-
-	}
+void downPulse(void)
+{
+	// pin down
+	PORTB &= ~SERVO_MASK;
 }

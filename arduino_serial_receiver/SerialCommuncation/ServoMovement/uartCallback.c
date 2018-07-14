@@ -11,7 +11,7 @@
 #include "uartDriver.h"
 #include "uartCallback.h"
 
-void foreachLineRead(void (*inputCallback)(char*)) // void (*inputCallback)(char)
+void foreachLineRead(void (*inputCallback)(char*))
 {
 	while(TRUE) {
 		
@@ -21,8 +21,17 @@ void foreachLineRead(void (*inputCallback)(char*)) // void (*inputCallback)(char
 		
 		while((input[i] = getchar()) != '\x0D' && i < 10)
 		{
-			printf("%c", input[i]);
-			i++;
+			if (input[i] == '\x7F')
+			{
+				if (i > 0)
+				{
+					printf("%c", input[i--]);
+				}
+			}
+			else
+			{
+				printf("%c", input[i++]);
+			}
 		}
 		
 		inputCallback(input);
@@ -31,8 +40,6 @@ void foreachLineRead(void (*inputCallback)(char*)) // void (*inputCallback)(char
 		i = 0;
 		
 		printf("\n");
-		
-		
 	}
 }
 
@@ -44,7 +51,5 @@ void foreachCharRead(void) {
 		printf("\nYou wrote %c\n", input);
 		
 		printf("\nIn ASCII: %X\n", input);
-		
-		//inputCallback(input);
 	}
 }
