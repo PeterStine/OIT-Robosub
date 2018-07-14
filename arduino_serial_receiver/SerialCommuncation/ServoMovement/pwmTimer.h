@@ -9,9 +9,7 @@
 #ifndef PWMTIMER_H_
 #define PWMTIMER_H_
 
-#include <avr/io.h>
 #include <stdio.h>
-#include <avr/interrupt.h>
 
 void timerInit(void (*pulseUpFn)(void), void (*pulseDownFn)(void));
 

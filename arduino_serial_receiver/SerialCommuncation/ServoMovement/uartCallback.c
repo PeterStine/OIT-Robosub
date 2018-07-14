@@ -13,8 +13,8 @@
 
 void foreachLineRead(void (*inputCallback)(char*))
 {
-	while(TRUE) {
-		
+	while(TRUE)
+	{
 		char input[5];
 		int i = 0;
 		printf("\nPlease enter a character: ");
@@ -43,8 +43,10 @@ void foreachLineRead(void (*inputCallback)(char*))
 	}
 }
 
-void foreachCharRead(void) {
-	while(TRUE) {
+void foreachCharRead(void)
+{
+	while(TRUE)
+	{
 		printf("Please input: ");
 		char input = getchar();
 		

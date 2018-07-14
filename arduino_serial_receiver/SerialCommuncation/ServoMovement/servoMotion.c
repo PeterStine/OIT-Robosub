@@ -14,20 +14,14 @@
 void upPulse(void);
 void downPulse(void);
 
-void servoInit(void) {
+void servoInit(void)
+{
 	DDRB |= SERVO_MASK;
 	timerInit(upPulse, downPulse);
 }
 
-void delay_us(unsigned long us) {
-	unsigned long steps = us / DELAY_STEP;
-	for (unsigned long i = 0; i < steps; i++) {
-		_delay_us(DELAY_STEP);
-	}
-}
-
-void servoPosition(unsigned long pos) {
-	
+void servoPosition(unsigned long pos)
+{
 	upPulseTime(pos);
 }
 

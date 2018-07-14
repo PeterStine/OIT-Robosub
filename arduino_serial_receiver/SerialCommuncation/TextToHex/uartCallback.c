@@ -11,10 +11,10 @@
 #include "uartDriver.h"
 #include "uartCallback.h"
 
-void foreachLineRead(void (*inputCallback)(char*)) // void (*inputCallback)(char)
+void foreachLineRead(void (*inputCallback)(char*))
 {
-	while(TRUE) {
-		
+	while(TRUE)
+	{
 		char input[5];
 		int i = 0;
 		printf("\nPlease enter a character: ");
@@ -24,27 +24,24 @@ void foreachLineRead(void (*inputCallback)(char*)) // void (*inputCallback)(char
 			printf("%c", input[i]);
 			i++;
 		}
-		
 		inputCallback(input);
 		
 		input[i] = '\0';
 		i = 0;
 		
 		printf("\n");
-		
-		
 	}
 }
 
-void foreachCharRead(void) {
-	while(TRUE) {
+void foreachCharRead(void)
+{
+	while(TRUE)
+	{
 		printf("Please input: ");
 		char input = getchar();
 		
 		printf("\nYou wrote %c\n", input);
 		
 		printf("\nIn ASCII: %X\n", input);
-		
-		//inputCallback(input);
 	}
 }

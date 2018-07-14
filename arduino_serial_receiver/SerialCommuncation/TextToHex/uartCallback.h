@@ -15,8 +15,8 @@
 #define FALSE 0
 #define TRUE !FALSE
 
-/* To be understood! uartCallbackInit() cannot be called from function. It has to be a macro. Why? */
-#define uartCallbackInit() { \
+#define uartCallbackInit() \
+{ \
 	/* Create File Pointers for in and out */ \
 	FILE uart_output = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE); \
 	FILE uart_input = FDEV_SETUP_STREAM(NULL, uart_getchar, _FDEV_SETUP_READ);   \
@@ -29,7 +29,7 @@
 	stdin  = &uart_input; \
 }
 
-void foreachLineRead(void (*inputCallback)(char*)); // void (*inputCallback)(char)
+void foreachLineRead(void (*inputCallback)(char*));
 
 void foreachCharRead(void);
 

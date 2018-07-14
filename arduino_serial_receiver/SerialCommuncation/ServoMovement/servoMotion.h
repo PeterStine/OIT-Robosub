@@ -11,7 +11,6 @@
 
 /// Include Files
 #include <avr/io.h>
-#include <util/delay.h>
 
 // Defines
 #define FALSE 0

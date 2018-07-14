@@ -5,7 +5,7 @@
  * Created: 7/12/2018 6:34:44 PM
  *  Author: jaysu
  */ 
-
+#include <avr/interrupt.h>
 #include "pwmTimer.h"
 
 void (*pulseDown)(void);
