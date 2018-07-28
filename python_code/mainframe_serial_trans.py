@@ -5,6 +5,9 @@
 
 import serial
 
+# For tensorflow to import correctly, the python file must be executed from within the virtual environment
+import tensorflow as tf
+
 with serial.Serial('/dev/ttyUSB0', 9600, timeout = 1) as port: # Open Serial port
 	port.write(b'<11,45,0,1>')
 	line = port.readline()  # read '\n' terminated line
