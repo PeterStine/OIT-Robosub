@@ -26,7 +26,7 @@ port.write(b'1500,1500,1500,1500,1500,1500\n')
 
 if port.is_open:
 	time.sleep(2)
-	port.write(b'1600,1600,1600,1600,1600,1600\n')
+	port.write(b'1400,1600,1500,1500,1500,1500\n') # Go down for 2 seconds
 	time.sleep(2)
 	for x in xrange(1,10):
 		line = port.readline()
@@ -34,7 +34,20 @@ if port.is_open:
 else:
 	print("Connection failed")
 
+# Forward for 5 seconds
 time.sleep(2)
-port.write(b'1400,1400,1400,1400,1400,1400\n')
+port.write(b'1500,1500,1600,1600,1600,1600\n')
+
+# Backward for 5 seconds
+port.write(b'1500,1500,1400,1400,1400,1400\n')
+time.sleep(5)
+
+# Spin for 10 Seconds
+port.write(b'1500,1500,1600,1400,1600,1400\n')
+time.sleep(5)
+
+# Stop
+time.sleep(5)
+port.write(b'1500,1500,1500,1500,1500,1500\n')
 
 port.close()
