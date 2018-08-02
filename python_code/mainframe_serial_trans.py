@@ -4,6 +4,7 @@
 # https://pyserial.readthedocs.io/en/latest/shortintro.html#opening-serial-ports
 
 import serial
+import time
 
 # For tensorflow to import correctly, the python file must be executed from venv
 #wimport tensorflow as tf
@@ -18,27 +19,22 @@ import serial
 	#port.write(b'1600,1600,1600,1600,1600,1600\n')
 	#line = port.readline()  # read '\n' terminated line
 
-port = serial.Serial('/dev/ttyUSB1')
+port = serial.Serial('/dev/ttyUSB1', 9600)
 
-if port.is_open == False:
-	port = serial.Serial('/dev/ttyUSB1') 
-else:
-	print("USB0 and USB1 Failed to open")
 
-print(port.name)
-
-port.baudrate = 115200
+port.write(b'1500,1500,1500,1500,1500,1500\n')
 
 if port.is_open:
-	
-	print("Connection opened")
-	start = "Failure"
-	start = port.readline(50)
-	
-	print(start)
-	port.write(b'<1600,1600,1600,1600,1600,1600>')
-
+	time.sleep(2)
+	port.write(b'1600,1600,1600,1600,1600,1600\n')
+	time.sleep(2)
+	for x in xrange(1,10):
+		line = port.readline()
+		print(line)
 else:
 	print("Connection failed")
+
+time.sleep(2)
+port.write(b'1400,1400,1400,1400,1400,1400\n')
 
 port.close()
