@@ -281,11 +281,13 @@ void loop() //Main Loop
 void thrusterStart() {
   if (Serial.available())  {
     char c = Serial.read();
-    if (c == '>') {
+    if (c == '\n') {
       //do stuff
       
+      Serial.println();
+      
       ind1 = readString.indexOf(',');
-      read1 = readString.substring(1, ind1);
+      read1 = readString.substring(0, ind1);
       ind2 = readString.indexOf(',', ind1+1 );
       read2 = readString.substring(ind1+1, ind2);
       ind3 = readString.indexOf(',', ind2+1 );
@@ -298,7 +300,20 @@ void thrusterStart() {
       read6 = readString.substring(ind5+1);      
       
       
-     
+      Serial.print("thruster1 = ");
+      Serial.println(read1); 
+      Serial.print("thruster2 = ");
+      Serial.println(read2);
+      Serial.print("thruster3 = ");
+      Serial.println(read3);
+      Serial.print("thruster4 = ");
+      Serial.println(read4);
+      Serial.print("thruster5 = ");
+      Serial.println(read5);
+      Serial.print("thruster6 = ");
+      Serial.println(read6);
+      Serial.println();
+      Serial.println();
       
       servoMovement();
       
@@ -309,8 +324,7 @@ void thrusterStart() {
       readString += c;
     }
   }
-}
-
+}s
 void servoMovement(){
   int a = read1.toInt();
       int b = read2.toInt();

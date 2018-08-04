@@ -1,5 +1,6 @@
 # To open this file in interactive mode:
 # https://stackoverflow.com/questions/4624416/is-there-a-possibility-to-execute-a-python-script-while-being-in-interactive-mod
+# For tensorflow to import correctly, the python file must be executed from venv
 
 # TensorFlow and tf.keras
 import tensorflow as tf
