@@ -27,15 +27,29 @@ def set_thrusters(a,b,c,d,e,f,delay):
 	print("Use time.time()")
 
 def set_thrusters_DEPRECATED(a,b,c,d,e,f,delay):
-	
+        # Jay Sucharitakul
+        seconds = 11 # Initial time must be the time+1 (now 10+1)
+        timer = None
+
+        seconds -= 1
+        if seconds==0:
+                # Peter's code
+                line = str(1500 + a) + b',' + str(1500 + b) + b',' + str(1500 + c) + b',' + str(1500 + d) + b',' + str(1500 + e) + b',' + str(1500 + f) + b'\n'
+                THRUST.write(line)
+                seconds = 10
+        timer = threading.Timer(1, tick)
+        timer.start()
+
+        
+        
 	# Concatenate values relative to stationary
-	line = str(1500 + a) + b',' + str(1500 + b) + b',' + str(1500 + c) + b',' + str(1500 + d) + b',' + str(1500 + e) + b',' + str(1500 + f) + b'\n'
-	THRUST.write(line)
+	#line = str(1500 + a) + b',' + str(1500 + b) + b',' + str(1500 + c) + b',' + str(1500 + d) + b',' + str(1500 + e) + b',' + str(1500 + f) + b'\n'
+	#THRUST.write(line)
 
-	time.sleep(delay)
+	#time.sleep(delay)
 	
-def tprint(string)
-
+def tprint(string):
+        print("Unfinished")
 
 # ********** Imports *********
 
@@ -44,6 +58,7 @@ import cv2
 import serial
 import time
 import Tkinter as tk
+import threading
 
 
 # ********** Initialization to devices **********
@@ -76,7 +91,7 @@ while True:
 	#set_thrusters(-70,110,300,300,294,294,180) # Go forward (Different ESC's on either side)
 
 	if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+                break
 
 
 cap = cv2.VideoCapture(1)
