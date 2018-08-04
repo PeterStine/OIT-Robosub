@@ -72,6 +72,7 @@ while True:
 
 
 
+<<<<<<< HEAD
 
 
 cap = cv2.VideoCapture(1)
@@ -110,4 +111,31 @@ if IMU.is_open == False:
 IMU.close()
 THRUST.close()
 print("Serial Connection Closed")
+=======
+if port.is_open:
+	time.sleep(2)
+	port.write(b'1400,1600,1500,1500,1500,1500\n') # Go down for 2 seconds
+	time.sleep(2)
+	for x in xrange(1,10):
+		line = port.readline()
+		print(line)
+else:
+	print("Connection failed")
+
+# Forward for 5 seconds
+time.sleep(2)
+port.write(b'1500,1500,1600,1600,1600,1600\n')
+
+# Backward for 5 seconds
+port.write(b'1500,1500,1400,1400,1400,1400\n')
+time.sleep(5)
+
+# Spin for 10 Seconds
+port.write(b'1500,1500,1600,1400,1600,1400\n')
+time.sleep(5)
+
+# Stop
+time.sleep(5)
+port.write(b'1500,1500,1500,1500,1500,1500\n')
+>>>>>>> f478cb38725165b0247f8a30c008da12495294f3
 
