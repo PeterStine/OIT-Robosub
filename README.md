@@ -1,11 +1,9 @@
 # OIT-Robosub
-Oregon Tech Robosub (AUVSI) Software Team
+Oregon Tech Robosub (Robonation) Software Team
 
 	Introduction
+
 Everything will be done mainly in Python for vision processing and machine learning. Hardware control for the sub will be accomplished primarily using Atmel Studio using C code on an ATMEGA328p microcontroller. Basic goals for software is object tracking with cameras, and for embedded is controlling the thrusters with a flight controller.
-
-	OpenCV Section
-
 
 	Machine Learning Section
 
