@@ -7,7 +7,7 @@ Everything will be done mainly in Python for vision processing and machine learn
 
 	Machine Learning Section
 
-The following is a list of websites to get started on researching Machine Learning (ML) to use in our design for the sub.
+The following is a list of websites to get started on researching Machine Learning (ML) to use in training the sub to recognize different objects. Opencv can be used to pipe in camera video to tensorflow.
 
 http://www.opennn.net/
 https://www.tensorflow.org/
