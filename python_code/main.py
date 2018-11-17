@@ -16,6 +16,8 @@
 # http://forum.arduino.cc/index.php?topic=81612.0
 # https://www.arduino.cc/en/Serial/Begin
 
+
+# All of the following functions need to be placed into separate files.
 # ********** Functions **********
 def cast_float(n):
 	try:
@@ -66,7 +68,7 @@ import threading
 # Initialize GUI
 
 
-# Initalize serial port connections
+# Initalize serial port connections (This design is outdated, based upon using two separate arduinos
 THRUST = serial.Serial('/dev/ttyUSB1')
 IMU = serial.Serial('/dev/ttyUSB0', 115200, timeout = 1)
 
@@ -93,28 +95,8 @@ while True:
 	if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
+# ********** Video Processing **********
 
-cap = cv2.VideoCapture(1)
-
-# Define the codec and create VideoWriter object
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
-
-while(cap.isOpened()):
-    ret, frame = cap.read()
-    if ret==True:
-    
-
-        frame = cv2.flip(frame,0)
-
-        # write the flipped frame
-        out.write(frame)
-
-        cv2.imshow('frame',frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    else:
-        break
 
 
 # ******** Device and Port Release ********
