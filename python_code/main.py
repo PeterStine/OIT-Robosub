@@ -23,55 +23,63 @@ import numpy as np
 import cv2
 import serial
 import time
-import Tkinter as tk
-import threading
+#import Tkinter as tk
+#import threading
+
+# Robosub Created Libraries
+import vid_process
 
 
 # ********** Initialization to devices **********
 
-# Initialize GUI
+# Initialize Tkinter GUI
 
 
-# Initalize serial port connections (This design is outdated, based upon using two separate arduinos
-THRUST = serial.Serial('/dev/ttyUSB1')
-IMU = serial.Serial('/dev/ttyUSB0', 115200, timeout = 1)
+# Initalize serial port connections
+# (This design is outdated, based upon using two separate arduinos)
+ENABLE_SERIAL  = False
 
-# Required for proper thruster operation
-time.sleep(2)
+
+if ENABLE_SERIAL:
+    THRUST = serial.Serial('/dev/ttyUSB1') # This should check the system for USB devices (If the system is linux and supports lsusb) and will auto configure pyserial initialization
+    IMU = serial.Serial('/dev/ttyUSB0', 115200, timeout = 1)
+
+    # Required for proper thruster operation
+    time.sleep(2)
 
 
 # ********* Main Control Loop *********
 
-while True:
-	if IMU.is_open:
-		line = IMU.readline()
-		split_line = line.split(',')
-		roll = cast_float(split_line[0])
-		pitch = cast_float(split_line[1])
-		yaw = cast_float(split_line[2])
-		print(yaw)
-
-	#time.sleep(2) # This workaround messes with other sensors. Find another way to create a delay with interrupts
-	#set_thrusters(0,0,0,0,0,0,5)
-	#set_thrusters(-120,165,0,0,0,0,2) # Go down 
-	#set_thrusters(-70,110,300,300,294,294,180) # Go forward (Different ESC's on either side)
-
-	if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-
-# ********** Video Processing **********
 
 
-# ******** Device and Port Release ********
+# ********* Video Processing **********
+vid_process.vid_test("pvf")
 
-# Release everything if job is finished
-cap.release()
-out.release()
-cv2.destroyAllWindows()
+if ENABLE_SERIAL:
+    while True:
+        if IMU.is_open:
+            line = IMU.readline()
+            split_line = line.split(',')
+            roll = cast_float(split_line[0])
+            pitch = cast_float(split_line[1])
+            yaw = cast_float(split_line[2])
+            print(yaw)
 
-if IMU.is_open == False:
-	print("Connection failed")
+        time.sleep(2) # This workaround messes with other sensors. Find another way to create a delay with interrupts
+        set_thrusters(0,0,0,0,0,0,5)
+        set_thrusters(-120,165,0,0,0,0,2) # Go down
+        set_thrusters(-70,110,300,300,294,294,180) # Go forward (Different ESC's on either side)
 
-IMU.close()
-THRUST.close()
-print("Serial Connection Closed")
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+
+
+
+    # ******** Device and Port Release ********
+
+    if IMU.is_open == False:
+        print("Connection failed")
+
+    IMU.close()
+    THRUST.close()
+    print("Serial Connection Closed")
