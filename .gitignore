@@ -263,4 +263,8 @@ __pycache__/
 =======
 *.opendb
 *.opensdf
+
+# Filetypes added by Peter Stine
+*.swp
+
 >>>>>>> 6e4ed8784dc33d75096882f52829395d3b44dbec
